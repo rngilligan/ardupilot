@@ -1,7 +1,7 @@
 #include "Copter.h"
 
 // land_init - initialise land controller
-bool ModeLand::init(bool ignore_checks)
+bool ModePlndLand::init(bool ignore_checks)
 {
     // check if we have GPS and decide which LAND we're going to do
     control_position = copter.position_ok();
@@ -56,7 +56,7 @@ bool ModeLand::init(bool ignore_checks)
 
 // land_run - runs the land controller
 // should be called at 100hz or more
-void ModeLand::run()
+void ModePlndLand::run()
 {
     if (control_position) {
         gps_run();
@@ -68,7 +68,7 @@ void ModeLand::run()
 // land_gps_run - runs the land controller
 //      horizontal position controlled with loiter controller
 //      should be called at 100hz or more
-void ModeLand::gps_run()
+void ModePlndLand::gps_run()
 {
     // disarm when the landing detector says we've landed
     if (copter.ap.land_complete && motors->get_spool_state() == AP_Motors::SpoolState::GROUND_IDLE) {
@@ -95,7 +95,7 @@ void ModeLand::gps_run()
 // land_nogps_run - runs the land controller
 //      pilot controls roll and pitch angles
 //      should be called at 100hz or more
-void ModeLand::nogps_run()
+void ModePlndLand::nogps_run()
 {
     float target_roll = 0.0f, target_pitch = 0.0f;
 
@@ -144,7 +144,7 @@ void ModeLand::nogps_run()
 // do_not_use_GPS - forces land-mode to not use the GPS but instead rely on pilot input for roll and pitch
 //  called during GPS failsafe to ensure that if we were already in LAND mode that we do not use the GPS
 //  has no effect if we are not already in LAND mode
-void ModeLand::do_not_use_GPS()
+void ModePlndLand::do_not_use_GPS()
 {
     control_position = false;
 }
@@ -153,8 +153,8 @@ void ModeLand::do_not_use_GPS()
 //  this is always called from a failsafe so we trigger notification to pilot
 void Copter::set_mode_land_with_pause(ModeReason reason)
 {
-    set_mode(Mode::Number::LAND, reason);
-    mode_land.set_land_pause(true);
+    set_mode(Mode::Number::PLND_LAND, reason); // not sure what to do here.... do i change this and next line to PLND_LAND and mode_plnd_land?
+    mode_plnd_land.set_land_pause(true);
 
     // alert pilot to mode change
     AP_Notify::events.failsafe_mode_change = 1;
@@ -163,6 +163,6 @@ void Copter::set_mode_land_with_pause(ModeReason reason)
 // landing_with_GPS - returns true if vehicle is landing using GPS
 bool Copter::landing_with_GPS()
 {
-    return (flightmode->mode_number() == Mode::Number::LAND &&
-            mode_land.controlling_position());
+    return (flightmode->mode_number() == Mode::Number::PLND_LAND &&
+            mode_plnd_land.controlling_position());
 }

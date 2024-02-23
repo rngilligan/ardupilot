@@ -2015,7 +2015,7 @@ private:
 };
 
 
-class ModePLNDRTL : public Mode {
+class ModePlndRTL : public Mode {
 
 public:
     // inherit constructor
