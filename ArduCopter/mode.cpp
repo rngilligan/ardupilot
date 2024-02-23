@@ -179,6 +179,16 @@ Mode *Copter::mode_from_mode_num(const Mode::Number mode)
             break;
 #endif
 
+        case Mode::Number::PLND_LAND: // added for new precision land mode // may want to do enabled thing for this mode, if so add here like for precision rtl
+            ret = &mode_plnd_land;
+            break;
+
+#if MODE_PLND_RTL_ENABLED == ENABLED // added for precision rtl
+        case Mode::Number::PLND_RTL:
+            ret = &mode_plnd_rtl;
+            break;
+#endif
+
         default:
             break;
     }
