@@ -2067,7 +2067,7 @@ public:
         RTL_ALTTYPE_RELATIVE = 0,
         RTL_ALTTYPE_TERRAIN = 1
     };
-    ModePLNDRTL::RTLAltType get_alt_type() const;
+    ModePlndRTL::RTLAltType get_alt_type() const;
 
 protected:
 
