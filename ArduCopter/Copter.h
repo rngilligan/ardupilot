@@ -225,7 +225,7 @@ public:
     friend class ModeThrow;
     friend class ModeZigZag;
     friend class ModeAutorotate;
-    friend class ModeTurtle;
+    friend class ModeTurtle; // do my modes need to be added here?
 
     friend class _AutoTakeoff;
 
@@ -1053,6 +1053,10 @@ private:
 #endif
 #if MODE_TURTLE_ENABLED == ENABLED
     ModeTurtle mode_turtle;
+#endif
+    ModePlndLand mode_plnd_land; // added for precision land new mode
+#if MODE_PLND_RTL_ENABLED == ENABLED // added for precision rtl new mode
+    ModePlndRTL mode_plnd_rtl;
 #endif
 
     // mode.cpp
