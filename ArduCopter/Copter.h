@@ -226,6 +226,8 @@ public:
     friend class ModeZigZag;
     friend class ModeAutorotate;
     friend class ModeTurtle; // do my modes need to be added here?
+    friend class ModePlndLand;
+    friend class ModePlndRTL; //if works, add a conditional for if enabled
 
     friend class _AutoTakeoff;
 
