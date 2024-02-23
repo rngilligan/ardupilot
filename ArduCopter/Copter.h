@@ -1055,7 +1055,7 @@ private:
     ModeTurtle mode_turtle;
 #endif
     ModePlndLand mode_plnd_land; // added for precision land new mode
-#if MODE_PLND_RTL_ENABLED == ENABLED // added for precision rtl new mode
+#if MODE_PRTL_ENABLE == ENABLED // added for precision rtl new mode
     ModePlndRTL mode_plnd_rtl;
 #endif
 

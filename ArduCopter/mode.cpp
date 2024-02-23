@@ -183,7 +183,7 @@ Mode *Copter::mode_from_mode_num(const Mode::Number mode)
             ret = &mode_plnd_land;
             break;
 
-#if MODE_PLND_RTL_ENABLED == ENABLED // added for precision rtl
+#if MODE_PRTL_ENABLE == ENABLED // added for precision rtl
         case Mode::Number::PLND_RTL:
             ret = &mode_plnd_rtl;
             break;

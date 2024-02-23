@@ -229,6 +229,12 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////
+// PRTL - Precision Return To Launch
+#ifndef MODE_PRTL_ENABLE
+# define MODE_PRTL_ENABLE ENABLED
+#endif
+
+//////////////////////////////////////////////////////////////////////////////
 // SmartRTL - allows vehicle to retrace a (loop-eliminated) breadcrumb home
 #ifndef MODE_SMARTRTL_ENABLED
 # define MODE_SMARTRTL_ENABLED ENABLED

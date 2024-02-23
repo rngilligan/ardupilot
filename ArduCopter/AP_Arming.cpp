@@ -253,7 +253,7 @@ bool AP_Arming_Copter::parameter_checks(bool display_failure)
         #endif // HELI_FRAME
 
         // checks when using range finder for RTL
-#if MODE_RTL_ENABLED == ENABLED
+#if MODE_RTL_ENABLED == ENABLED // add or MODE_PRTL_ENABLE == Enabled?
         if (copter.mode_rtl.get_alt_type() == ModeRTL::RTLAltType::RTL_ALTTYPE_TERRAIN) {
             // get terrain source from wpnav
             const char *failure_template = "RTL_ALT_TYPE is above-terrain but %s";

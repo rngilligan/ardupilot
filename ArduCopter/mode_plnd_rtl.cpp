@@ -1,6 +1,6 @@
 #include "Copter.h"
 
-#if MODE_RTL_ENABLED == ENABLED //probably need to make a new parameter? or change this?
+#if MODE_PRTL_ENABLE == ENABLED // configuration for precision rtl
 
 /*
  * Init and run calls for RTL flight mode
