@@ -26,12 +26,12 @@ bool ModeRTL::init(bool ignore_checks)
     copter.ap.land_repo_active = false;
 
     // this will be set true if prec land is later active
-    copter.ap.prec_land_active = false;
+    //copter.ap.prec_land_active = false; //remove
 
-#if AC_PRECLAND_ENABLED
+//#if AC_PRECLAND_ENABLED
     // initialise precland state machine
-    copter.precland_statemachine.init();
-#endif
+//    copter.precland_statemachine.init();
+//#endif //remove
 
     return true;
 }
@@ -381,7 +381,8 @@ void ModeRTL::land_run(bool disarm_on_land)
     motors->set_desired_spool_state(AP_Motors::DesiredSpoolState::THROTTLE_UNLIMITED);
 
     // run normal landing or precision landing (if enabled)
-    land_run_normal_or_precland();
+    //land_run_normal_or_precland(); //remove
+    land_run_horiz_and_vert_control(); //added this to remove precision landing stuff
 }
 
 void ModeRTL::build_path()

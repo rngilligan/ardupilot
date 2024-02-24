@@ -31,7 +31,7 @@ bool ModeLand::init(bool ignore_checks)
     copter.ap.land_repo_active = false;
 
     // this will be set true if prec land is later active
-    copter.ap.prec_land_active = false;
+    //copter.ap.prec_land_active = false; // remove for custom plnd modes
 
     // initialise yaw
     auto_yaw.set_mode(AutoYaw::Mode::HOLD);
@@ -46,10 +46,10 @@ bool ModeLand::init(bool ignore_checks)
     copter.fence.auto_disable_fence_for_landing();
 #endif
 
-#if AC_PRECLAND_ENABLED
-    // initialise precland state machine
-    copter.precland_statemachine.init();
-#endif
+//#if AC_PRECLAND_ENABLED //remove
+//    // initialise precland state machine
+//    copter.precland_statemachine.init();
+//#endif
 
     return true;
 }
@@ -88,7 +88,8 @@ void ModeLand::gps_run()
         }
 
         // run normal landing or precision landing (if enabled)
-        land_run_normal_or_precland(land_pause);
+        //land_run_normal_or_precland(land_pause); //remove
+        land_run_horiz_and_vert_control(land_pause); //added this to remove precision landing stuff
     }
 }
 
