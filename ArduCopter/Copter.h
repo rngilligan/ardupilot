@@ -626,7 +626,9 @@ private:
         SMARTRTL_LAND      = 4,
         TERMINATE          = 5,
         AUTO_DO_LAND_START = 6,
-        BRAKE_LAND         = 7
+        BRAKE_LAND         = 7,
+        PLND_LAND          = 8, //added for new modes
+        PLND_RTL           = 9, // added for new modes fs action option
     };
 
     enum class FailsafeOption {
@@ -798,6 +800,7 @@ private:
     void set_mode_SmartRTL_or_land_with_pause(ModeReason reason);
     void set_mode_auto_do_land_start_or_RTL(ModeReason reason);
     void set_mode_brake_or_land_with_pause(ModeReason reason);
+    void set_mode_plnd_RTL_or_plnd_land_with_pause(ModeReason reason);
     bool should_disarm_on_failsafe();
     void do_failsafe_action(FailsafeAction action, ModeReason reason);
     void announce_failsafe(const char *type, const char *action_undertaken=nullptr);

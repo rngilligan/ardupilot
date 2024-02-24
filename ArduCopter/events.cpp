@@ -416,6 +416,20 @@ void Copter::set_mode_SmartRTL_or_RTL(ModeReason reason)
     }
 }
 
+// set_mode_plnd_RTL_or_plnd_land_with_pause - sets mode to plnd RTL if possible or plnd LAND with 4 second delay before descent starts
+//  this is always called from a failsafe so we trigger notification to pilot
+void Copter::set_mode_plnd_RTL_or_plnd_land_with_pause(ModeReason reason)
+{
+    // attempt to switch to plnd RTL, if this fails then switch to Land
+    if (!set_mode(Mode::Number::PLND_RTL, reason)) {
+        // set mode to plnd land and will trigger mode change notification to pilot
+        set_mode_plnd_land_with_pause(reason);
+    } else {
+        // alert pilot to mode change
+        AP_Notify::events.failsafe_mode_change = 1;
+    }
+}
+
 // Sets mode to Auto and jumps to DO_LAND_START, as set with AUTO_RTL param
 // This can come from failsafe or RC option
 void Copter::set_mode_auto_do_land_start_or_RTL(ModeReason reason)
@@ -499,6 +513,12 @@ void Copter::do_failsafe_action(FailsafeAction action, ModeReason reason){
             break;
         case FailsafeAction::BRAKE_LAND:
             set_mode_brake_or_land_with_pause(reason);
+            break;
+        case FailsafeAction::PLND_LAND: // added for new mode fs action
+            set_mode_plnd_land_with_pause(reason);
+            break;
+        case FailsafeAction::PLND_RTL: // added for new mode fs action
+            set_mode_plnd_RTL_or_plnd_land_with_pause(reason);
             break;
     }
 

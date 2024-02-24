@@ -137,7 +137,7 @@ void ModePlndRTL::climb_start()
         // this should not happen because rtl_build_path will have checked terrain data was available
         gcs().send_text(MAV_SEVERITY_CRITICAL,"RTL: unexpected error setting climb target");
         LOGGER_WRITE_ERROR(LogErrorSubsystem::NAVIGATION, LogErrorCode::FAILED_TO_SET_DESTINATION);
-        copter.set_mode(Mode::Number::LAND, ModeReason::TERRAIN_FAILSAFE);
+        copter.set_mode(Mode::Number::PLND_LAND, ModeReason::TERRAIN_FAILSAFE);
         return;
     }
 
