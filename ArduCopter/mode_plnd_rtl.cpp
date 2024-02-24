@@ -48,12 +48,12 @@ void ModePlndRTL::restart_without_terrain()
     gcs().send_text(MAV_SEVERITY_CRITICAL,"Restarting RTL - Terrain data missing");
 }
 
-ModePlndRTL::RTLAltType ModeRTL::get_alt_type() const
+ModePlndRTL::RTLAltType ModePlndRTL::get_alt_type() const
 {
     // sanity check parameter
-    switch ((ModePlndRTL::RTLAltType)g.rtl_alt_type) {
+    switch ((ModePlndRTL::RTLAltType)g.prtl_alt_type) {
     case RTLAltType::RTL_ALTTYPE_RELATIVE ... RTLAltType::RTL_ALTTYPE_TERRAIN:
-        return g.rtl_alt_type;
+        return g.prtl_alt_type;
     }
     // user has an invalid value
     return RTLAltType::RTL_ALTTYPE_RELATIVE;

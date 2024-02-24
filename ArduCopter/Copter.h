@@ -891,6 +891,10 @@ private:
     void set_mode_land_with_pause(ModeReason reason);
     bool landing_with_GPS();
 
+    // mode_plnd_land.cpp
+    void set_mode_plnd_land_with_pause(ModeReason reason);
+    bool plnd_landing_with_GPS();
+
     // motor_test.cpp
     void motor_test_output();
     bool mavlink_motor_control_check(const GCS_MAVLINK &gcs_chan, bool check_rc, const char* mode);

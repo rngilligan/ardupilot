@@ -151,7 +151,7 @@ void ModePlndLand::do_not_use_GPS()
 
 // set_mode_land_with_pause - sets mode to LAND and triggers 4 second delay before descent starts
 //  this is always called from a failsafe so we trigger notification to pilot
-void Copter::set_mode_land_with_pause(ModeReason reason)
+void Copter::set_mode_plnd_land_with_pause(ModeReason reason)
 {
     set_mode(Mode::Number::PLND_LAND, reason); // not sure what to do here.... do i change this and next line to PLND_LAND and mode_plnd_land?
     mode_plnd_land.set_land_pause(true);
@@ -161,7 +161,7 @@ void Copter::set_mode_land_with_pause(ModeReason reason)
 }
 
 // landing_with_GPS - returns true if vehicle is landing using GPS
-bool Copter::landing_with_GPS()
+bool Copter::plnd_landing_with_GPS()
 {
     return (flightmode->mode_number() == Mode::Number::PLND_LAND &&
             mode_plnd_land.controlling_position());

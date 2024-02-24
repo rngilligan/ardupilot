@@ -195,6 +195,9 @@ public:
 
         // 97: RSSI
         k_param_rssi = 97,
+
+        // misc3 98
+        k_param_prtl_alt_type, //= 98
                 
         //
         // 100: Inertial Nav
@@ -410,6 +413,10 @@ public:
     AP_Int16        rtl_climb_min;              // rtl minimum climb in cm
     AP_Int32        rtl_loiter_time;
     AP_Enum<ModeRTL::RTLAltType> rtl_alt_type;
+#endif
+
+#if MODE_PRTL_ENABLE == ENABLED
+    AP_Enum<ModePlndRTL::RTLAltType> prtl_alt_type;
 #endif
 
     AP_Int8         failsafe_gcs;               // ground station failsafe behavior
